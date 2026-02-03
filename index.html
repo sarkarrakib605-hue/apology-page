@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorry My zaraaaa💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to top right, #ff9a9e, #fad0c4);
+    }
+
+    /* Romantic Card */
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 55px 40px;
+      width: 90%;
+      max-width: 480px;
+      text-align: center;
+      border-radius: 30px;
+      box-shadow: 0 0 35px rgba(255, 0, 100, 0.4);
+      animation: fadeIn 2s ease;
+      z-index: 10;
+      position: relative;
+
+      /* Glass Blur Effect */
+      backdrop-filter: blur(12px);
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      color: #e63946;
+      font-family: cursive;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: #444;
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 28px;
+      font-size: 1.05rem;
+      border: none;
+      border-radius: 15px;
+      background: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      transition: 0.4s;
+      box-shadow: 0 0 18px rgba(255, 0, 80, 0.45);
+    }
+
+    button:hover {
+      background: #e63946;
+      transform: scale(1.07);
+    }
+
+    /* Hidden Love Message Popup */
+    #hiddenMessage {
+      display: none;
+      margin-top: 25px;
+      font-size: 1.3rem;
+      color: #d62828;
+      font-weight: bold;
+      animation: popUp 1s ease;
+    }
+
+    /* Forgive Buttons */
+    .forgive-buttons {
+      margin-top: 25px;
+    }
+
+    .yes-btn {
+      background: #38b000;
+    }
+
+    .yes-btn:hover {
+      background: #2d6a4f;
+    }
+
+    .no-btn {
+      background: #ff006e;
+    }
+
+    /* Kiss Animation */
+    #kiss {
+      display: none;
+      font-size: 3rem;
+      margin-top: 15px;
+      animation: kissPop 1s infinite alternate;
+    }
+
+    @keyframes kissPop {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.3); }
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: absolute;
+      font-size: 25px;
+      animation: floatUp 6s linear infinite;
+      bottom: -20px;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Fade Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes popUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Romantic Card -->
+  <div class="card">
+
+    <h1>I'm Sorry <span id="name">My Love</span> 💔</h1>
+
+    <p>
+      Sorry for everything... 🌹  
+      I never wanted to hurt you...  
+      You are my happiness ❤️  
+      Please forgive me... 🥺  
+    </p>
+
+    <!-- Love Button -->
+    <button onclick="showLoveMessage()">Show My Heart 💌</button>
+
+    <!-- Hidden Message -->
+    <div id="hiddenMessage">
+      💕 I promise I will always love & care for you 💕
+    </div>
+
+    <!-- Forgive Buttons -->
+    <div class="forgive-buttons">
+      <button class="yes-btn" onclick="forgiveYes()">Yes, I Forgive You ❤️</button>
+      <button class="no-btn" onclick="forgiveNo()">No 😢</button>
+    </div>
+
+    <!-- Kiss Emoji -->
+    <div id="kiss">💋💋💋</div>
+
+    <!-- Background Music Controls -->
+    <audio id="bgMusic" loop>
+      <source src="romantic.mp3" type="audio/mpeg">
+    </audio>
+
+  </div>
+
+  <script>
+    // Name Personalization (with Default)
+    let personName = prompt("Enter your love name 💖:") || "zaraaaaa";
+    document.getElementById("name").innerText = personName;
+
+    // Show Message + Play Music
+    function showLoveMessage() {
+      document.getElementById("hiddenMessage").style.display = "block";
+      document.getElementById("bgMusic").play();
+    }
+
+    // Forgive YES
+    function forgiveYes() {
+      alert("Awww 🥹❤️ Thank you my love!");
+      document.getElementById("kiss").style.display = "block";
+    }
+
+    // Forgive NO (Cute Reaction)
+    function forgiveNo() {
+      alert("Pleaseeee 😭💔 I will try harder!");
+    }
+
+    // Floating Hearts Generator (Multiple Emojis)
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+
+      const hearts = ["💖", "💘", "❤️", "💕", "💗", "💞"];
+      heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 30 + 15 + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 350);
+  </script>
+
+</body>
+</html>
